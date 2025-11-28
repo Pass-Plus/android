@@ -279,7 +279,7 @@ class SettingsRepositoryImpl(
         get() = activeUserId
             ?.let { userId ->
                 authDiskSource
-                    .getUserBiometicUnlockKeyFlow(userId)
+                    .getUserBiometricUnlockKeyFlow(userId)
                     .map { it != null }
             }
             ?: flowOf(false)
@@ -336,12 +336,6 @@ class SettingsRepositoryImpl(
                 userId = userId,
                 isAutofillSavePromptDisabled = value,
             )
-        }
-
-    override var isAutofillWebDomainCompatMode: Boolean
-        get() = settingsDiskSource.isAutofillWebDomainCompatMode ?: false
-        set(value) {
-            settingsDiskSource.isAutofillWebDomainCompatMode = value
         }
 
     override var blockedAutofillUris: List<String>
